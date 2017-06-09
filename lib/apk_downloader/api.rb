@@ -84,6 +84,12 @@ module ApkDownloader
       return resp.body
     end
 
+    def current_available_version package
+      log_in!
+      doc = details(package).detailsResponse.docV2
+      doc.details.appDetails.versionCode
+    end
+
     private
     def recursive_apk_fetch url, cookie, tries = 5
       raise ArgumentError, 'HTTP redirect too deep' if tries == 0

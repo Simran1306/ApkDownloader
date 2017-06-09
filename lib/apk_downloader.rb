@@ -18,5 +18,13 @@ module ApkDownloader
       data = @api.fetch_apk_data package
       File.open(destination, 'wb') { |f| f.write data }
     end
+
+
+    def playstore_version package
+      @api ||= Api.new
+      version_code = @api.current_available_version package
+
+      version_code
+    end
   end
 end
