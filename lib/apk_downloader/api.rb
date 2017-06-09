@@ -87,7 +87,7 @@ module ApkDownloader
     def current_available_version package
       log_in!
       doc = details(package).detailsResponse.docV2
-      doc.details.appDetails.versionCode
+      doc.details.appDetails.versionString
     end
 
     private
